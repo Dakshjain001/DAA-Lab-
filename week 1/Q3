@@ -1,0 +1,58 @@
+void linearsearch(vector<int> &arr, int start, int end, int key);
+void ispresent(vector<int> &arr, int key, int n);
+
+
+int main()
+{
+  int tc;
+  cin>>tc;
+  while(tc--)
+  {
+    int n;
+  cin>>n;
+  vector<int>arr(n);
+  for (int i = 0; i < n; i++)
+  {
+    cin>>arr[i];
+  }
+  int key;
+  cin>>key;
+  ispresent(arr,key,n);
+  tc--;
+  }
+  
+  return 0;
+}
+
+void ispresent(vector<int> &arr,int key,int n)
+{
+  if(arr[0]==key)
+  {
+    cout<<"present "<<0;
+  }
+  int i=1;
+  while(i<n && arr[i]<=key)
+  {
+    i*=2;
+  }
+  linearsearch(arr,i/2,min(n-1,i),key);
+}
+
+void linearsearch(vector<int> &arr,int start,int end,int key)
+{
+  int c=0;
+  for (int i = start; i <= end; i++)
+  {
+    if(arr[i]==key)
+    {
+      cout<<"Present at: "<<i<<endl;
+      return;
+    }
+    else{
+      c++;
+    }
+  }
+  cout<<"Not present: "<<c;
+  
+  
+}
